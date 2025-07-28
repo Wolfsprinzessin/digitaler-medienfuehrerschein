@@ -1,138 +1,70 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dateien & Notizen</title>
-    <link rel="stylesheet" href="style.css">
-
-        <style>
-    .feedback-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      background: #0058ff;
-      color: #fff;
-      border: none;
-      padding: 10px 25px;
-      font-size: 19px;
-      border-radius: 24px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .feedback-btn:hover {
-      background: #003db6;
-    }
-    /* Overlay-Styling */
-    .modal-bg {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.40);
-      z-index: 10000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-bg.active { display: flex; }
-    .modal-content {
-      background: #fff;
-      border-radius: 14px;
-      padding: 0;
-      max-width: 600px;
-      width: 96vw;
-      min-height: 400px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.24);
-      position: relative;
-      overflow: hidden;
-      animation: popIn 0.18s;
-    }
-    @keyframes popIn {
-      from {transform: scale(0.9);}
-      to {transform: scale(1);}
-    }
-    .close-modal {
-      position: absolute;
-      top: 12px; right: 20px;
-      font-size: 28px;
-      color: #aaa;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 10;
-      transition: color 0.2s;
-    }
-    .close-modal:hover {
-      color: #333;
-    }
-    .embedform {
-      width: 100%;
-      height: 500px;
-      border: 0;
-      display: block;
-    }
-    @media (max-width: 600px) {
-      .modal-content { max-width: 98vw; min-height: 60vw;}
-      .embedform { height: 340px; }
-    }
-  </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body height="100%">
-    <iframe 
+    <iframe
       name="myiFrame"
       scrolling="no"
       frameborder="1"
       marginheight="0px"
       marginwidth="0px"
-        width="100%"
-        height="100%"
+      width="100%"
+      height="100%"
       src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/Bbl0McyZfrwFM2agWfo2W3/Medienf%C3%BChrerschein?node-id=226-397&t=ET3PkXMWmIric7sd-1&hide-ui=1"
-      allowfullscreen>
+      allowfullscreen
+    >
     </iframe>
 
+    <!-- Feedback Button, oben rechts fixiert -->
+    <button class="feedback-btn" id="open-feedback">Feedback geben</button>
 
-      <!-- Feedback Button, oben rechts fixiert -->
-  <button class="feedback-btn" id="open-feedback">Feedback geben</button>
-
-  <!-- Overlay/Modal für das Google-Formular -->
-  <div class="modal-bg" id="modal-bg">
-    <div class="modal-content">
-      <button class="close-modal" id="close-modal" title="Schließen">×</button>
-      <!-- GoogleForms-Embed: -->
-      <iframe class="embedform"
-        src="https://forms.gle/GdcsYM61fzRu8ypc7"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Feedback-Formular">Wird geladen…</iframe>
+    <!-- Overlay/Modal für das Google-Formular -->
+    <div class="modal-bg" id="modal-bg">
+      <div class="modal-content">
+        <button class="close-modal" id="close-modal" title="Schließen">
+          ×
+        </button>
+        <!-- GoogleForms-Embed: -->
+        <iframe
+          class="embedform"
+          src="https://forms.gle/GdcsYM61fzRu8ypc7"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Feedback-Formular"
+          >Wird geladen…</iframe
+        >
+      </div>
     </div>
-  </div>
 
+    <script>
+      // Modal-Funktionalität
+      const openBtn = document.getElementById("open-feedback");
+      const modal = document.getElementById("modal-bg");
+      const closeBtn = document.getElementById("close-modal");
 
-  <script>
-  // Modal-Funktionalität
-  const openBtn = document.getElementById('open-feedback');
-  const modal = document.getElementById('modal-bg');
-  const closeBtn = document.getElementById('close-modal');
+      openBtn.addEventListener("click", function () {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
 
-  openBtn.addEventListener('click', function(){
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
+      closeBtn.addEventListener("click", function () {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      });
 
-  closeBtn.addEventListener('click', function(){
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-
-  // Auch Schließen bei Klick aufs Overlay-Hintergrund
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  });
-</script>
+      // Auch Schließen bei Klick aufs Overlay-Hintergrund
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      });
+    </script>
   </body>
 </html>
