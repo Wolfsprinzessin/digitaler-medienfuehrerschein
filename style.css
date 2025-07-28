@@ -2,6 +2,9 @@ html {
   height: 100%;
   color: red;
 }
+body {
+  height: 100%;
+}
 
 .feedback-btn {
   position: fixed;
