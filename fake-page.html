@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cringe Zone</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: hotpink;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .text-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .main-text {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: lime;
+      font-size: 8vw;
+      text-shadow: 2px 2px 2px black;
+      animation: blink 1s infinite alternate;
+      transform: rotate(-5deg);
+    }
+
+    .subtext {
+      font-family: 'Courier New', monospace;
+      color: black;
+      background: yellow;
+      display: inline-block;
+      padding: 0.5em 1em;
+      margin-top: 1em;
+      font-size: 1.2vw;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    }
+
+    button {
+      height: 80px;
+      width: 300px;
+      margin-top: 1em;
+      border-radius: 50px;
+      color: blueviolet;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="text-container">
+    <div class="main-text">YOLO 😎✨🔥</div>
+    <div class="subtext">Einfach auf alles klicken ist meistens keine gute Idee. Vor allem, wenn du die Quelle nicht sicher kennst.</div>
+    <a href="https://schueler.ibg-lahr.de/course/view.php?id=36"><button>Zurück zu Moodle</button></a>
+  </div>
+  
+</body>
+</html>
